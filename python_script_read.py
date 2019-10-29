@@ -69,7 +69,37 @@ def main():
 				
 				print("narr_date:",narr_date)
 				print("narr_down:",narr_down)
+
+
+			if ('pricing' in line.lower()):
+				pricing_list=['after bl','around bl','before bl','after nor','around nor','before nor']
+				price = str(line.lower())
+				price_sp = price.partition(':')[2]
+				print(price_sp.find('bl'))
+				numbers = re.findall('\d+',price)
+				price_list = price.split(' ')
+				print(price_list)
+				print(numbers[0])
 				
+
+
+
+			if ('demurrage' in line.lower()):
+				dem_list =[]
+				dem = line.partition(':')
+				demu = str(dem[2]).replace(' ',"")
+				data_dem = demu.strip("\n")
+				dem_list.append(data_dem)
+				#print(dem_list)
+				if ('charterparty' in dem_list) or('cp' in dem_list) or ('c/p' in dem_list):
+					print("charter party")
+
+			if ('laytime' in line.lower()):
+				lay = line.partition(':')
+				layt = str(lay[2])
+				numbers = re.findall('\d+',layt)
+				Laytime = numbers[0]
+				print("Laytime:",Laytime)
 
 
 				
